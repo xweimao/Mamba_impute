@@ -1,0 +1,28 @@
+{
+  "data": {
+    "out_dir": "data",
+    "train_vcf"   : "data/hg19_chr22/chr22_train.vcf.gz",
+    "train_dismat" : "data/hg19_chr22/chr22_train.p_dis.mat",
+    "val_vcf"   : "data/hg19_chr22/chr22_val.vcf.gz",
+    "val_dismat" : "data/hg19_chr22/chr22_val.p_dis.mat",
+    "tihp": 1
+  },
+  "model": {
+    "embed_dim": 64,
+    "n_heads": 8,
+    "n_layers": 4,
+    "dropout": 0.1
+  },
+  "train": {
+    "batch_size": 256,
+    "dataloader_workers": 32,
+    "n_var": 2000,
+    "site_overlap": 100,
+    "epochs": 100,
+    "mask_ratio": 0.3,
+    "train4test": 500,
+    "val_interval": 10,
+    "save_interval": 10,
+    "save_dir": "./ckpt"
+  }
+}
