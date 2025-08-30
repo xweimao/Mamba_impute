@@ -1,7 +1,7 @@
-统计量,值
-样本数量,2000.0
-树数量,40835.0
-突变数量,26472.0
-序列长度(bp),5081847.0
-核苷酸多样性,0.00031774489481286406
+Statistic,Value
+Sample Count,2000.0
+Tree Count,40835.0
+Mutation Count,26472.0
+Sequence Length (bp),5081847.0
+Nucleotide Diversity,0.00031774489481286406
 Tajima's D,-1.4351514310999018

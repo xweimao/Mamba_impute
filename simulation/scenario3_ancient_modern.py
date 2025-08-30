@@ -118,9 +118,9 @@ def simulate_time_series_sampling(ts):
     samples_per_pop = ts.num_samples // 3
     
     # 现代样本 (0年前)
-    sample_info.extend([("YRI", "现代", 0)] * samples_per_pop)
-    sample_info.extend([("CEU", "现代", 0)] * samples_per_pop)  
-    sample_info.extend([("CHB", "现代", 0)] * (ts.num_samples - 2 * samples_per_pop))
+    sample_info.extend([("YRI", "Modern", 0)] * samples_per_pop)
+    sample_info.extend([("CEU", "Modern", 0)] * samples_per_pop)
+    sample_info.extend([("CHB", "Modern", 0)] * (ts.num_samples - 2 * samples_per_pop))
     
     # 为了模拟古代样本，我们从现有样本中选择一些作为"古代"样本
     # 这是一个简化的方法，实际应用中需要真正的时间采样
@@ -144,9 +144,9 @@ def simulate_time_series_sampling(ts):
     for i, idx in enumerate(ancient_indices):
         pop_name = sample_info[idx][0]
         if i % 150 < 100:  # 前100个是1000-10000年前
-            sample_info[idx] = (pop_name, "古代_近期", 5000)  # 平均5000年前
+            sample_info[idx] = (pop_name, "Ancient_Recent", 5000)  # 平均5000年前
         else:  # 后50个是10000-40000年前
-            sample_info[idx] = (pop_name, "古代_远期", 25000)  # 平均25000年前
+            sample_info[idx] = (pop_name, "Ancient_Old", 25000)  # 平均25000年前
     
     return sample_info
 
@@ -181,7 +181,7 @@ def plot_temporal_analysis(genotype_matrix, populations, time_periods, ages):
     
     # 设置颜色
     pop_colors = {'YRI': 'red', 'CEU': 'blue', 'CHB': 'green'}
-    time_colors = {'现代': 'lightblue', '古代_近期': 'orange', '古代_远期': 'darkred'}
+    time_colors = {'Modern': 'lightblue', 'Ancient_Recent': 'orange', 'Ancient_Old': 'darkred'}
     
     plt.figure(figsize=(20, 12))
     
@@ -383,8 +383,8 @@ def main():
     stats_df = pd.DataFrame({
         'Statistic': ['Total Sample Count', 'Tree Count', 'Mutation Count', 'Sequence Length (bp)', 'Modern Samples', 'Ancient Samples'],
         'Value': [ts.num_samples, ts.num_trees, ts.num_mutations, int(ts.sequence_length),
-               time_periods.count('现代'),
-               time_periods.count('古代_近期') + time_periods.count('古代_远期')]
+               time_periods.count('Modern'),
+               time_periods.count('Ancient_Recent') + time_periods.count('Ancient_Old')]
     })
     
     # 保存结果到data目录
